@@ -56,7 +56,23 @@ In order to use public transport
 As a customer
 I want money on my card
 
+### Logic
 
+oyester
+   - money init
+   - add money
+      - condition to much money - default max value
+journey
+   - history init
+   - touch in
+      - minimum amount for a single journey if I touch in
+      - history << destination or failed to touch in
+   - touch out
+      - history << destination or failed to touch out
+      - fare deduction(calculation) or penalty
+   - history of jurney
+       history >> return destination places
 
-
+destination 
+   - places and zones { places: 1, place2: 3 }
 
