@@ -6,6 +6,7 @@ class Oyster
   end
   
   def top_up(money)
+    return "Limit 90 pounds" if @balance + money > 90
     @balance =+ money
   end
 
