@@ -58,10 +58,11 @@ I want money on my card
 
 ### Logic
 
-oyester
+oyster
    - money init
    - add money
       - condition to much money - default max value
+
 journey
    - history init
    - touch in
@@ -73,6 +74,6 @@ journey
    - history of jurney
        history >> return destination places
 
-destination 
+station
    - places and zones { places: 1, place2: 3 }
 
