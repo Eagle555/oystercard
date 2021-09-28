@@ -15,5 +15,12 @@ describe Oyster do
     maximun_balance = Oyster::MAXIMUM_BALANCE 
     expect(card.top_up(maximun_balance + 1)).to eq("Maximum balance of #{maximun_balance} exceeded")
    end
+   it 'it should respond to balance' do
+     expect(card).to respond_to(:deduct)
+   end
+   it 'can #deduct the balance' do
+     card.top_up(20)
+     expect{ card.deduct 10 }.to change{ card.balance }.by -10
+   end
 end
 
