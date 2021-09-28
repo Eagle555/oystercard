@@ -8,7 +8,11 @@ class Oyster
   
   def top_up(money)
     return "Maximum balance of #{MAXIMUM_BALANCE} exceeded" if @balance + money > 90
-    @balance =+ money
+    @balance += money
   end
-
+  
+  def deduct(money)
+    @balance -= money
+  end
+  
 end
