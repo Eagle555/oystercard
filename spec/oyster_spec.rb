@@ -12,7 +12,8 @@ describe Oyster do
     expect{ card.top_up 1 }.to change{card.balance}.by 1
    end
    it 'oyster card respond to limit of £90' do
-    expect(card.top_up(91)).to eq("Limit 90 pounds")
+    maximun_balance = Oyster::MAXIMUM_BALANCE 
+    expect(card.top_up(maximun_balance + 1)).to eq("Maximum balance of #{maximun_balance} exceeded")
    end
 end
 
