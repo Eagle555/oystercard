@@ -77,3 +77,20 @@ journey
 station
    - places and zones { places: 1, place2: 3 }
 
+money 
+   in             
+   add
+      not too much
+
+journey
+   history
+      previous trips 
+         touch in(card) 
+            failure(penalty)
+            minimum ammount
+         touch out(card)
+            failure(penalty)
+            fare calculation(card)
+
+station 
+   zones
