@@ -11,16 +11,17 @@ describe Journey do
   it 'is initiially not in journey' do
     expect(journey).not_to be_in_journey
   end
+  it 'minimum balance of £1 on touch in' do
+    expect(journey.touch_in).to eq("Minimum amount of £#{journey.minimum_balance} required!")
+  end
   it 'can #touch_in' do
-    journey.touch_in(1)
+    journey.oystercard.top_up(2)
+    journey.touch_in
     expect(journey).to be_in_journey
   end
   it 'can #touch_out' do
-    journey.touch_in(1)
+    journey.touch_in
     journey.touch_out
     expect(journey).not_to be_in_journey
-  end
-  it 'minimum balance of £1 on touch in' do
-    expect(journey.touch_in(0)).to eq("Minimum amount of £#{journey.minimum_balance} required!")
   end
 end
