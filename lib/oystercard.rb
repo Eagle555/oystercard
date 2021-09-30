@@ -15,10 +15,6 @@ class Oystercard
     return "Maximum balance of #{MAXIMUM_BALANCE} exceeded" if @balance + money > 90
     @balance += money
   end
-  
-  def deduct(money)
-    @balance -= money
-  end
 
   def touch_in
       return "Minimum amount of £#{minimum_balance} required!" if @balance < minimum_balance
@@ -32,5 +28,10 @@ class Oystercard
 
     def in_journey?
      @journey
+    end
+
+    private 
+    def deduct(money)
+      @balance -= money
     end
 end
