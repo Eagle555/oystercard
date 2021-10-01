@@ -5,7 +5,8 @@ describe Oystercard do
 
   #double is an Rspec creation, you will make a station object in future, 
   let(:entry_station){double :fake_entry_station}
-  # entry_station = "Hampstead" can't point it to a string? 
+  #  entry_station = "Hampstead" - overwritten the content of entry station, will contain the 
+  #  string and not the mock class.  
   let(:exit_station){double :fake_exit_station}
   #let is a global variable, can be seen everywhere 
 
@@ -62,25 +63,26 @@ describe Oystercard do
       expect(subject).to be_in_journey
     end  
 
-    it 'stores the entry station' do
-      subject.top_up(2)
-      subject.touch_in(entry_station)
-      expect(subject.entry_station).to eq(entry_station)
-    end
+    # it 'stores the entry station' do
+    #   subject.top_up(2)
+    #   subject.touch_in(entry_station)
+    #   expect(subject.entry_station).to eq(entry_station)
+    # end
   end
 
   describe '#touch_out' do 
   #  let(:exit_station) {"Angel"}
   #  let(:entry_station) {"Liverpool_Street"}
-  #not needed as we have doubles and variables from that in top level 
+  #This is a variable. not needed as we have doubles and variables from that in top level. 
+
     let(:journey){ {entry_station: entry_station, exit_station: exit_station}}
     
-    it 'stores a journey' do
-      subject.top_up(2)
-      subject.touch_in(entry_station)
-      subject.touch_out(exit_station)
-      expect(subject.journeys).to include journey
-    end 
+    # it 'stores a journey' do
+    #   subject.top_up(2)
+    #   subject.touch_in(entry_station)
+    #   subject.touch_out(exit_station)
+    #   expect(subject.journeys).to include journey
+    # end 
 
     it 'can touch_out of the station and not be in journey' do
       subject.top_up(2)
@@ -90,16 +92,16 @@ describe Oystercard do
     end
 
     it 'will deduct the fare when you touch out' do
+      subject.top_up(5)
       subject.touch_in(entry_station)
-      subject.touch_out(exit_station)
       expect{subject.touch_out(exit_station)}.to change{subject.balance}.by(-Oystercard::MINIMUM_FARE)
     end
 
-    it 'stores exit station' do
-      subject.touch_in(entry_station)
-      subject.touch_out(exit_station)
-      expect(subject.exit_station).to eq exit_station
-    end
+    # it 'stores exit station' do
+    #   subject.touch_in(entry_station)
+    #   subject.touch_out(exit_station)
+    #   expect(subject.exit_station).to eq exit_station
+    # end
 
     it 'will create a journey after touch in and touch out' do
       subject.top_up(2)
